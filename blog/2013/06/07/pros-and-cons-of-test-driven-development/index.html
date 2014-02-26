@@ -128,9 +128,34 @@
   
 </header>
 <section>
-  <p>I won&rsquo;t tell you again that testing your app is important, you know that, right? I was asked this question recently and I think it&rsquo;s worth sharing it here.</p>
+  
+    <p>I won&rsquo;t tell you again that testing your app is important, you know that, right? I was asked this question recently and I think it&rsquo;s worth sharing it here.</p>
+
+<!-- more -->
 
 
+<h1>PROS:</h1>
+
+<ol>
+<li>It is first a <strong>safety net</strong>. All the existing code is tested. As human programmers we make mistakes and when we change or improve a code, TDD will allow us to spot our bugs quicker.</li>
+<li>It can serve as <strong>documentation for new developers</strong>, it helps understanding what is the purpose of each piece of code. but it&rsquo;s definitely not enough as documentation (see cons 1)!</li>
+<li>It helps to improve and <strong>debug legacy code</strong>. You never remember what this piece of code you wrote a year ago (or even a month ago) was meant to do.</li>
+<li>It seems paradoxical because you write more code at the end but the <strong>overall cost of the app is reduced</strong>. You will gain time on the long-term for debugging and finding what&rsquo;s wrong with your code. (see related cons 2)</li>
+<li>By writing tests first, you need to focus and think first on the code you are going to implement. It allows for more decoupled, clean and simple code (KISS principle). It pushes to <strong>write good code design</strong>.</li>
+</ol>
+
+
+<h1>CONS:</h1>
+
+<ol>
+<li>Unit tests are a kind of documentation but there are <strong>not a substitute for a documentation</strong>, this will sure help understanding the code but it is not enough. It is neither a substitute for integration testing.</li>
+<li>Even if the overall cost is reduced, you will have <strong>more up front costs</strong> because you will need to write more code and unit tests before getting something ready.</li>
+<li>Writing good maintainable and reusable tests is <strong>not easy and requires practice</strong>. You have to know what to test, when not to test something. For example if you write unit test at a level too low, future small changes on your code will break your test and you will end up spending too much time on rewriting your tests.</li>
+<li>It is a good practice and a first step for a reliable application but this is <strong>not enough as an overall testing tool</strong>. Unit testing (and also integration testing) are only test and cases that the programmer thought about when writing it. In real conditions, with users who have different support, versions, configurations, there will always be a bug that you didn&rsquo;t think about. So <strong>beta testing is also important</strong> to do to try minimise the amount of bugs on your app.</li>
+</ol>
+
+
+  
 
 </section>
 <footer>

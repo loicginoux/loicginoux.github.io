@@ -128,9 +128,150 @@
   
 </header>
 <section>
-  <p>In Ruby on Rails, all your javascript is available everywhere, but we always want to run some javascript only on certain pages.  This is how I manage to run and compartiment my javascript code based on models and actions.</p>
+  
+    <p>In Ruby on Rails, all your javascript is available everywhere, but we always want to run some javascript only on certain pages.  This is how I manage to run and compartiment my javascript code based on models and actions.</p>
+
+<!-- more -->
 
 
+<p>First you need to add to your html layout a way for javascript to detect which model and which action the page is rendering:</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/application.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body</span> <span class="na">data-controller=</span><span class="s">&quot;&lt;%= controller_name %&gt;&quot;</span> <span class="na">data-action=</span><span class="s">&quot;&lt;%= action_name %&gt;&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then in your main javascript file:</p>
+
+<figure class='code'><figcaption><span>app/assets/application.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//= require jquery</span>
+</span><span class='line'><span class="c1">//= require jquery_ujs</span>
+</span><span class='line'><span class="c1">//= require ./init</span>
+</span><span class='line'><span class="c1">//= require ./utils</span>
+</span><span class='line'><span class="c1">// = require_tree ./ressources</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We define the code that will be run on every page at initialisation:</p>
+
+<figure class='code'><figcaption><span>app/assets/init.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// init your global app object</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// you need to add your controllers here to not throw an error</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// when calling the exec function from the utils.js file</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">common</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="nx">users</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="nx">another_controller</span><span class="o">:</span><span class="p">{}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;this will run on every page&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I usually add a UTIL object where I put my utilities functions, for this example, there are two functions that interest us &ldquo;init&rdquo; and &ldquo;exec&rdquo;:</p>
+
+<figure class='code'><figcaption><span>app/assets/utils.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nb">window</span><span class="p">.</span><span class="nx">UTIL</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// execute the corresponding function</span>
+</span><span class='line'>  <span class="nx">exec</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">ns</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span><span class="p">;</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">action</span><span class="p">){</span>
+</span><span class='line'>     <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">;</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span> <span class="nx">controller</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span> <span class="p">){</span>
+</span><span class='line'>     <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]();</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// run on every page load to init the javascript calls</span>
+</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-controller&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-action&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;common&quot;</span><span class="p">)</span> <span class="c1">//run common.init</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">)</span> <span class="c1">//run controller.init</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="c1">//run controller.action</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//run the init function</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="nx">UTIL</span><span class="p">.</span><span class="nx">init</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then inside my directory app/assets/ressources I have one js file per model with for example for the user model something like that:</p>
+
+<figure class='code'><figcaption><span>app/assets/ressources/user.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">users</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run on all pages for user&#39;s action&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">index</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user index page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">view</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user view page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">edit</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user edit page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user show page&quot;</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope this will be useful for those who are looking for a solution. It&rsquo;s not the best but it works and gets things separated.</p>
+
+  
 
 </section>
 <footer>
