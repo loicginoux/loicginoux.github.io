@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-26T16:55:13+01:00</updated>
+  <updated>2014-02-26T19:43:04+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -20,6 +20,9 @@
     <id>http://loicginoux.github.io/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app</id>
     <content type="html"><![CDATA[<p>In a recent project, I had to make the app faster. I could work on both the front end and the back-end. The is an unordered list but you should first know where is your bottleneck in your app with the help of tools like the webkit debug tool, pageSpeed or an app like New Relic. Learning how to find the bottleneck on an app is not the matter of this post. I just list here few things not to forget if you want your app to be a bit optimized.
 Let’s see that.</p>
+
+<!-- more -->
+
 
 <h2>Back-end</h2>
 
@@ -95,6 +98,9 @@ Let’s see that.</p>
     <updated>2013-05-18T13:58:34+02:00</updated>
     <id>http://loicginoux.github.io/blog/2013/05/18/how-to-run-page-specific-javascript-on-rails</id>
     <content type="html"><![CDATA[<p>In Ruby on Rails, all your javascript is available everywhere, but we always want to run some javascript only on certain pages.  This is how I manage to run and compartiment my javascript code based on models and actions.</p>
+
+<!-- more -->
+
 
 <p>First you need to add to your html layout a way for javascript to detect which model and which action the page is rendering:</p>
 

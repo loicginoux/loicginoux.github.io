@@ -51,7 +51,7 @@
 			  	<div class="search-container">
 					<form action="http://google.com/search" method="get">
 						<fieldset role="search">
-							<input type="hidden" name="q" value="site:blog.alexharr.is" />
+							<input type="hidden" name="q" value="site:http://loicginoux.github.io" />
 							<input class="search-field" type="text" name="q" results="0" placeholder=""/>
 							<input class="submit" type="submit" value=""/>
 						</fieldset>
@@ -87,33 +87,6 @@
     </li>
     
 </ul>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'loicginoux',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
 
 
 
@@ -157,80 +130,7 @@
 <section>
   <p>As a javascript developer you will at one time or another find the common problem where you have something undefined because the <em>this</em> refers to the global window object.</p>
 
-<p>Let see an example:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">MyObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Loic&quot;</span><span class="p">,</span>
-</span><span class='line'> <span class="nx">hello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello I&#39;m &quot;</span> <span class="o">%</span><span class="mi">2</span><span class="nx">B</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-</span><span class='line'> <span class="p">},</span>
-</span><span class='line'> <span class="nx">getName</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class='line'> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>       <span class="c1">// alert &quot;Hello I&#39;m Loic&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'><span class="nx">hello</span><span class="p">();</span>   <span class="c1">// alert &quot;Hello I&#39;m &quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// alert &quot;Hello I&#39;m &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So what we see is that the <em>this.name</em> is not known in the last two run. Why that?
-This is because <em>this</em> refers to the context the function is run on, it is determined at the time the function is executed.</p>
-
-<p>So when you call a function using <em>MyObject.hello()</em>, ‘this’ is the MyObject object.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>       <span class="c1">// this is directly the MyObject</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>But you loose the context of the original object if you take a reference to the function.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'><span class="nx">hello</span><span class="p">();</span>   <span class="c1">// hello is a reference to the function so it will loose the original context</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// inside the setTimout function, the function is a reference variable too</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The solution is to manually tell javascript that we want the <em>this</em> to refer to a particular object.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">hello</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">);</span>   <span class="c1">// &quot;apply&quot; run the function at his left with the this referring to his first argument.</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// &quot;bind&quot; returns the function but during execution, it will apply the context of the object passed in his first parameter.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I know about this and I usually correct the error directly when it occurs, but I had to write it down to be able to explain it and put it in words. Now that <em>this</em> is explained, I shouldn’t wait for the error to come up and fix but see directly when I will loose the context and fix it straight away.</p>
 
 </section>
 <footer>

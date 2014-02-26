@@ -1,9 +1,9 @@
 /*
 Syntax error: Undefined variable: "$darkBlue".
-        on line 27 of /Users/lginoux/project/rails/octopres/sass/structure.scss
+        on line 27 of /Users/lginoux/project/octopres/sass/structure.scss
 
 Backtrace:
-/Users/lginoux/project/rails/octopres/sass/structure.scss:27
+/Users/lginoux/project/octopres/sass/structure.scss:27
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/script/variable.rb:49:in `_perform'
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/script/node.rb:40:in `perform'
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
@@ -60,4 +60,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$darkBlue\".\A         on line 27 of /Users/lginoux/project/rails/octopres/sass/structure.scss"; }
+  content: "Syntax error: Undefined variable: \"$darkBlue\".\A         on line 27 of /Users/lginoux/project/octopres/sass/structure.scss"; }

@@ -51,7 +51,7 @@
 			  	<div class="search-container">
 					<form action="http://google.com/search" method="get">
 						<fieldset role="search">
-							<input type="hidden" name="q" value="site:blog.alexharr.is" />
+							<input type="hidden" name="q" value="site:http://loicginoux.github.io" />
 							<input class="search-field" type="text" name="q" results="0" placeholder=""/>
 							<input class="submit" type="submit" value=""/>
 						</fieldset>
@@ -87,33 +87,6 @@
     </li>
     
 </ul>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'loicginoux',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
 
 
 
@@ -157,11 +130,9 @@
   
 </header>
 <section>
-  <p>A quick note to say that I joined a network of french freelancers called <a href="http://www.greaaat.com">greaaat</a>, and you know what? It looks&hellip;. promising! That was exactly the kind of network I was looking for. I think that&rsquo;s a really good idea. As a freelancer you are usually by yourself when you are looking for answers or guidance, and usually Google is your best friend in this case (quit sad isn&rsquo;t it?).</p>
+  <p>A quick note to say that I joined a network of french freelancers called <a href="http://www.greaaat.com">greaaat</a>, and you know what? It looks&hellip;. promising!</p>
 
-<p>Anyway, this kind of network is good for both clients and freelancers. As a client, you are sure to find a freelancer available and if your project is growing and you need different type of skills you will find that with greaaat. There are all type of skills in the network. As a freelancer,  you can find and share all type of resources or questions. We also share our clients. When you get contacted for a work you cannot do, there will be a freelancer in greaaat available and the same goes the other way too when you get a period without much work.</p>
 
-<p>The creator of the network, <a href="http://jonathanpath.com/">Jonathan Path</a>, has good ideas of other websites to help freelancers and I will be happy to help if I can. That means that I will probably write few blog post about freelancing on its website. We will see what come next but I feel like it&rsquo;s a beginning of a new adventure :)</p>
 
 </section>
 <footer>
@@ -207,132 +178,7 @@
 <section>
   <p>Even if I use git everyday, I don&rsquo;t always remember the exact commands to do some git actions. This is few notes I like to have close when I need them.</p>
 
-<h2>Saving work in progress in a specific branch</h2>
 
-<p>When you need to make a quick change on another branch, you don&rsquo;t need to commit anything on your current branch, use &lsquo;stash&rsquo;:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git stash
-</span><span class='line'>git stash list <span class="c"># list all stash</span>
-</span><span class='line'>git stash apply <span class="c"># apply last stash work</span>
-</span><span class='line'>git stash drop <span class="c">#remove it</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>When merging conflicts happen, use your local or remote version of the code</h2>
-
-<p>In case of conflicts, you sometimes  know which version of the file is the correct one, you don&rsquo;t need to go into the code and solve manually the conflicts, you can do directly something like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git checkout --ours index.html
-</span><span class='line'>git checkout --theirs _layouts/default.html
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You should note that these options are only in Git versions 1.6.1 and up. If you have an older version and don’t feel like upgrading, there’s ways to get around this. To emulate &mdash;theirs:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset -- _layouts/default.html
-</span><span class='line'>git checkout MERGE_HEAD -- _layouts/default.html
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And for &mdash;ours:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset -- index.html
-</span><span class='line'>git checkout ORIG_HEAD -- index.html
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Of course, once you’ve got the conflicts worked out, git add whatever changes need to be added in, and git commit away.</p>
-
-<h2>Customise your git log by adding the branch graphs</h2>
-
-<p>I usually use this log trick to see my git logs. I find it clearer.  First put this in your git config file  ~/.gitconfig:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span><span class="nb">alias</span><span class="o">]</span>
-</span><span class='line'><span class="nv">lg1</span> <span class="o">=</span> log --graph --abbrev-commit --decorate --date<span class="o">=</span>relative --format<span class="o">=</span>format:<span class="s1">&#39;%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)&#39;</span> --all
-</span><span class='line'>
-</span><span class='line'><span class="nv">lg2</span> <span class="o">=</span> log --graph --abbrev-commit --decorate --format<span class="o">=</span>format:<span class="s1">&#39;%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n&#39;&#39; %C(white)%s%C(reset) %C(dim white)- %an%C(reset)&#39;</span> --all
-</span><span class='line'>
-</span><span class='line'><span class="nv">lg</span> <span class="o">=</span> !<span class="s2">&quot;git lg1&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>you will see clearer the different branches when logging using git lg1 or git lg2.</p>
-
-<h2>Commit and add only certain changes of a file</h2>
-
-<p>Sometimes, in the case of a really big file for example, we modify it on different points for different features or bugs. If you only want to git add few modifications use:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add -p file
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You will then be asked to choose which modifications of he file to add.</p>
-
-<h2>changing a commit message from an old commit</h2>
-
-<p>This works only if you haven&rsquo;t pushed to the remote repository. Let say we want to change the third last commit we did:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rebase -i HEAD~3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>change the word &lsquo;pick&rsquo; by  &#8217;edit&#8217;  and save.  then:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git commit --amend
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>you can now change the commit message.</p>
-
-<p>and finally:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rebase --continue
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>that&rsquo;s it. If you want to change a commit message of the most recent (unpushed) commit, you can simply use:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git commit --amend -m <span class="s1">&#39;new message&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>pass all change on a branch to another branch</h2>
-
-<p>I usually do that on master branch when I finished a feature that is on &lsquo;featureX&rsquo; branch. Be sure that master branch hasn&rsquo;t changed since you started working on your branch featureX</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git checkout featureX
-</span><span class='line'>git merge -s ours master
-</span><span class='line'>git checkout master
-</span><span class='line'>git merge featureX
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>all changes will be passed to master this way.</p>
 
 </section>
 <footer>
@@ -378,80 +224,7 @@
 <section>
   <p>As a javascript developer you will at one time or another find the common problem where you have something undefined because the <em>this</em> refers to the global window object.</p>
 
-<p>Let see an example:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">MyObject</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Loic&quot;</span><span class="p">,</span>
-</span><span class='line'> <span class="nx">hello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello I&#39;m &quot;</span> <span class="o">%</span><span class="mi">2</span><span class="nx">B</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-</span><span class='line'> <span class="p">},</span>
-</span><span class='line'> <span class="nx">getName</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class='line'> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>       <span class="c1">// alert &quot;Hello I&#39;m Loic&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'><span class="nx">hello</span><span class="p">();</span>   <span class="c1">// alert &quot;Hello I&#39;m &quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// alert &quot;Hello I&#39;m &quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So what we see is that the <em>this.name</em> is not known in the last two run. Why that?
-This is because <em>this</em> refers to the context the function is run on, it is determined at the time the function is executed.</p>
-
-<p>So when you call a function using <em>MyObject.hello()</em>, ‘this’ is the MyObject object.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>       <span class="c1">// this is directly the MyObject</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>But you loose the context of the original object if you take a reference to the function.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'><span class="nx">hello</span><span class="p">();</span>   <span class="c1">// hello is a reference to the function so it will loose the original context</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// inside the setTimout function, the function is a reference variable too</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The solution is to manually tell javascript that we want the <em>this</em> to refer to a particular object.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">hello</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">);</span>   <span class="c1">// &quot;apply&quot; run the function at his left with the this referring to his first argument.</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">.</span><span class="nx">hello</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">MyObject</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// &quot;bind&quot; returns the function but during execution, it will apply the context of the object passed in his first parameter.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I know about this and I usually correct the error directly when it occurs, but I had to write it down to be able to explain it and put it in words. Now that <em>this</em> is explained, I shouldn’t wait for the error to come up and fix but see directly when I will loose the context and fix it straight away.</p>
 
 </section>
 <footer>
@@ -498,71 +271,7 @@ This is because <em>this</em> refers to the context the function is run on, it i
   <p>In a recent project, I had to make the app faster. I could work on both the front end and the back-end. The is an unordered list but you should first know where is your bottleneck in your app with the help of tools like the webkit debug tool, pageSpeed or an app like New Relic. Learning how to find the bottleneck on an app is not the matter of this post. I just list here few things not to forget if you want your app to be a bit optimized.
 Let’s see that.</p>
 
-<h2>Back-end</h2>
 
-<p>- use of a<strong> content delivery network</strong> to serve your static files. I am confortable with the config Amazon S3 %2B Amazon Cloudfront. This will help relieving your server from serving this never changing css, image and js files. these gem will help:&nbsp;<a href="https://github.com/rumblelabs/asset_sync">asset_sync</a>, <a href="https://github.com/marcel/aws-s3">aws-s3</a>, <a href="https://github.com/aws">aws-sdk</a></p>
-
-<p>- use of <a href="http://guides.rubyonrails.org/caching_with_rails.html">cache</a>. Rails makes it really easy to <strong>cache</strong> things. The <a href="https://github.com/mperham/dalli">Dalli</a> gem is really easy to use. Depending on your app, you can cache at different levels, Page caching, Action caching, fragment caching or request caching. Take a look at what page, action, request is used a lot and don’t change too often and cache it.</p>
-
-<p>- use of <strong>database indexes</strong>. There are really important for your database complicated queries. <a href="http://www.percona.com/resources/technical-presentations/mysql-indexing-percona-mysql-university-buenos-aires-argentina">this</a> will explain everything.</p>
-
-<p>- Add a<strong> cache control header</strong> or expires. This will help cache assets in your user’s browser.</p>
-
-<p>- <strong>avoid redirect</strong></p>
-
-<p>- do you use &nbsp;<a href="http://railscasts.com/episodes/22-eager-loading">eager loading</a>? in Rails be careful with the <strong>N+1 queries problem</strong>. it’s a really easy one fix.</p>
-
-<p>- when querying the db, only <strong>select the attributes you need</strong>. You don’t need to load the whole user table if you just display their username for example.</p>
-
-<p>&ndash;<strong> increase concurrency</strong> on your app. I use the server <a href="https://devcenter.heroku.com/articles/rails-unicorn">Unicorn</a> for that, and it integrates well with Heroku.</p>
-
-<p>- Use of <strong>background tasks</strong> for things like sending emails, reporting, etc… This is also useful in the case where you delete an item that will automatically delete all his associated objects. If you have thousands or millions of them, you can’t let the user wait for the task to delete all objects. Delete the first object and delete associated objects in background. &nbsp;<a href="http://mperham.github.io/sidekiq/">sidekick</a> or <a href="https://github.com/collectiveidea/delayed_job">delayed_job</a> will work for that.</p>
-
-<p>- <strong>NoSQL database</strong> and solutions like mongoDB will scale out more easily but have some downside. check out <a href="http://blog.sphereinc.com/2012/03/pros-and-cons-of-using-nosql-solutions/">this article</a></p>
-
-<p>- Create some <a href="http://www.postgresql.org/docs/current/static/ddl-partitioning.html">partition tables</a> when a db table can potentially contains a lot of rows.</p>
-
-<p>- sometimes it’s better to create a redundant attribute or table. For example in a db with a Post table and a Comment table, if you have millions of comments and you need to count the number of comments for an article, you would better have a nb_comments column on the Article table rather that counting it every time. Another example with the same tables Posts/Comments. If you need to display a page for an article that list the number of &nbsp;comments grouped &nbsp;per day. You would better create a third table StatCommentsArticle that would contain a article_id, a date and a nb_comments. These techniques will increase speed but you need to be carefull with data consistency when creating/modifying/deleting a comment.</p>
-
-<p>If you want to see some of these techniques in action, check the small application I made. You can find it <a href="https://github.com/loicginoux/rails_performance_test">here</a> on my github account.</p>
-
-<h2>Front-end</h2>
-
-<p>- <strong>minify</strong> javascript, css, and html to save some bandwidth.</p>
-
-<p>- <strong>minimize http requests</strong>. To do that, first concatenate your js files and serve only one js file and do the same for css. Then for images used in css background, make them <a href="http://www.base64-image.de/">base64</a></p>
-
-<p>- serve <strong>gzip compressed</strong> javascript and css files. You probably need to configure both Rails and your server.</p>
-
-<p>- serve <strong>right size images</strong>. You don’t need to serve a 1280 * 960 image for a 340 * 260 img tag.</p>
-
-<p>- specify the width and height attribute on the img tag so that the browser doesn’t resize it.</p>
-
-<p>- keep your html code as simple as possible.</p>
-
-<p>- make your css rules as simple as possible.</p>
-
-<p>- use <strong>Css sprites</strong> when possible.</p>
-
-<p>- don’t use css @import</p>
-
-<p>- lazy load images. The images that are not in the viewport (directly visible) can be loaded when scrolled down. see <a href="http://www.appelsiini.net/projects/lazyload">this plugin</a></p>
-
-<p>- stylesheet on top of html page and javascript at bottom.</p>
-
-<p>- when using third-party javascript library, use a CDN.</p>
-
-<p>- <strong>defer</strong> or load javascript files asynchronously. <a href="http://www.sitepoint.com/non-blocking-async-defer/">more</a></p>
-
-<p>- use <strong>ajax</strong> when possible. if you just need to update a small part of the page, why reloading the whole page?</p>
-
-<p>- iframes are bad! There are just blocking the page onload.</p>
-
-<p>- <strong>minimize DOM access</strong> in javascript. try improving the way you manipulate the DOM and see if you can group your modification in fewer &nbsp;ones.</p>
-
-<p>- <strong>optimize your images</strong>. I discovered recently a really good tool for that. <a href="http://www.macroplant.com/adapter/">Adapter</a>. You can also include this in your automation tool like grunt with <a href="https://github.com/gruntjs/grunt-contrib-imagemin">imagemin</a></p>
-
-<p>If you’ve applied all of these points in your app, you should see quite an improvement. You will then be happy like when you were young and doing some tuning to your scooter to make it goes at what.. 100-110Km/h (in the down slope and with wind behind you). Where you not happy at this moment?!</p>
 
 </section>
 <footer>
@@ -606,27 +315,8 @@ Let’s see that.</p>
   
 </header>
 <section>
-  <p>I won&rsquo;t tell you again that testing your app is important, you know that, right? I was asked this question recently and I think it&rsquo;s worth sharing it here:</p>
+  <p>I won&rsquo;t tell you again that testing your app is important, you know that, right? I was asked this question recently and I think it&rsquo;s worth sharing it here.</p>
 
-<h1>PROS:</h1>
-
-<ol>
-<li>It is first a <strong>safety net</strong>. All the existing code is tested. As human programmers we make mistakes and when we change or improve a code, TDD will allow us to spot our bugs quicker.</li>
-<li>It can serve as <strong>documentation for new developers</strong>, it helps understanding what is the purpose of each piece of code. but it&rsquo;s definitely not enough as documentation (see cons 1)!</li>
-<li>It helps to improve and <strong>debug legacy code</strong>. You never remember what this piece of code you wrote a year ago (or even a month ago) was meant to do.</li>
-<li>It seems paradoxical because you write more code at the end but the <strong>overall cost of the app is reduced</strong>. You will gain time on the long-term for debugging and finding what&rsquo;s wrong with your code. (see related cons 2)</li>
-<li>By writing tests first, you need to focus and think first on the code you are going to implement. It allows for more decoupled, clean and simple code (KISS principle). It pushes to <strong>write good code design</strong>.</li>
-</ol>
-
-
-<h1>CONS:</h1>
-
-<ol>
-<li>Unit tests are a kind of documentation but there are <strong>not a substitute for a documentation</strong>, this will sure help understanding the code but it is not enough. It is neither a substitute for integration testing.</li>
-<li>Even if the overall cost is reduced, you will have <strong>more up front costs</strong> because you will need to write more code and unit tests before getting something ready.</li>
-<li>Writing good maintainable and reusable tests is <strong>not easy and requires practice</strong>. You have to know what to test, when not to test something. For example if you write unit test at a level too low, future small changes on your code will break your test and you will end up spending too much time on rewriting your tests.</li>
-<li>It is a good practice and a first step for a reliable application but this is <strong>not enough as an overall testing tool</strong>. Unit testing (and also integration testing) are only test and cases that the programmer thought about when writing it. In real conditions, with users who have different support, versions, configurations, there will always be a bug that you didn&rsquo;t think about. So <strong>beta testing is also important</strong> to do to try minimise the amount of bugs on your app.</li>
-</ol>
 
 
 </section>
@@ -673,142 +363,7 @@ Let’s see that.</p>
 <section>
   <p>In Ruby on Rails, all your javascript is available everywhere, but we always want to run some javascript only on certain pages.  This is how I manage to run and compartiment my javascript code based on models and actions.</p>
 
-<p>First you need to add to your html layout a way for javascript to detect which model and which action the page is rendering:</p>
 
-<figure class='code'><figcaption><span>app/views/layouts/application.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body</span> <span class="na">data-controller=</span><span class="s">&quot;&lt;%= controller_name %&gt;&quot;</span> <span class="na">data-action=</span><span class="s">&quot;&lt;%= action_name %&gt;&quot;</span><span class="nt">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then in your main javascript file:</p>
-
-<figure class='code'><figcaption><span>app/assets/application.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//= require jquery</span>
-</span><span class='line'><span class="c1">//= require jquery_ujs</span>
-</span><span class='line'><span class="c1">//= require ./init</span>
-</span><span class='line'><span class="c1">//= require ./utils</span>
-</span><span class='line'><span class="c1">// = require_tree ./ressources</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>We define the code that will be run on every page at initialisation:</p>
-
-<figure class='code'><figcaption><span>app/assets/init.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// init your global app object</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// you need to add your controllers here to not throw an error</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// when calling the exec function from the utils.js file</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">common</span><span class="o">:</span> <span class="p">{},</span>
-</span><span class='line'>  <span class="nx">users</span><span class="o">:</span> <span class="p">{},</span>
-</span><span class='line'>  <span class="nx">another_controller</span><span class="o">:</span><span class="p">{}</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;this will run on every page&quot;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I usually add a UTIL object where I put my utilities functions, for this example, there are two functions that interest us &ldquo;init&rdquo; and &ldquo;exec&rdquo;:</p>
-
-<figure class='code'><figcaption><span>app/assets/utils.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nb">window</span><span class="p">.</span><span class="nx">UTIL</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// execute the corresponding function</span>
-</span><span class='line'>  <span class="nx">exec</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>   <span class="kd">var</span> <span class="nx">ns</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span><span class="p">;</span>
-</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">action</span><span class="p">){</span>
-</span><span class='line'>     <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>   <span class="k">if</span> <span class="p">(</span> <span class="nx">controller</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span> <span class="p">){</span>
-</span><span class='line'>     <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]();</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// run on every page load to init the javascript calls</span>
-</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-controller&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-action&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;common&quot;</span><span class="p">)</span> <span class="c1">//run common.init</span>
-</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">)</span> <span class="c1">//run controller.init</span>
-</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="c1">//run controller.action</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//run the init function</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="nx">UTIL</span><span class="p">.</span><span class="nx">init</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And then inside my directory app/assets/ressources I have one js file per model with for example for the user model something like that:</p>
-
-<figure class='code'><figcaption><span>app/assets/ressources/user.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">users</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run on all pages for user&#39;s action&quot;</span><span class="p">);</span> <span class="p">},</span>
-</span><span class='line'>  <span class="nx">index</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user index page&quot;</span><span class="p">);</span> <span class="p">},</span>
-</span><span class='line'>  <span class="nx">view</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user view page&quot;</span><span class="p">);</span> <span class="p">},</span>
-</span><span class='line'>  <span class="nx">edit</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user edit page&quot;</span><span class="p">);</span> <span class="p">},</span>
-</span><span class='line'>  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user show page&quot;</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I hope this will be useful for those who are looking for a solution. It&rsquo;s not the best but it works and gets things separated.</p>
 
 </section>
 <footer>
