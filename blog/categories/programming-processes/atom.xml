@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: programming processes | Blog]]></title>
+  <link href="http://loicginoux.github.io/blog/categories/programming-processes/atom.xml" rel="self"/>
+  <link href="http://loicginoux.github.io/"/>
+  <updated>2014-02-26T16:55:13+01:00</updated>
+  <id>http://loicginoux.github.io/</id>
+  <author>
+    <name><![CDATA[Loïc Ginoux]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git commands to remember ]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/10/git-commands-to-remember/"/>
+    <updated>2014-02-10T13:42:32+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/10/git-commands-to-remember</id>
+    <content type="html"><![CDATA[<p>Even if I use git everyday, I don&rsquo;t always remember the exact commands to do some git actions. This is few notes I like to have close when I need them.</p>
+
+<h2>Saving work in progress in a specific branch</h2>
+
+<p>When you need to make a quick change on another branch, you don&rsquo;t need to commit anything on your current branch, use &lsquo;stash&rsquo;:</p>
+
+<p><code>bash
+git stash
+git stash list # list all stash
+git stash apply # apply last stash work
+git stash drop #remove it
+</code></p>
+
+<h2>When merging conflicts happen, use your local or remote version of the code</h2>
+
+<p>In case of conflicts, you sometimes  know which version of the file is the correct one, you don&rsquo;t need to go into the code and solve manually the conflicts, you can do directly something like this:</p>
+
+<p><code>bash
+git checkout --ours index.html
+git checkout --theirs _layouts/default.html
+</code></p>
+
+<p>You should note that these options are only in Git versions 1.6.1 and up. If you have an older version and don’t feel like upgrading, there’s ways to get around this. To emulate &mdash;theirs:</p>
+
+<p><code>bash
+git reset -- _layouts/default.html
+git checkout MERGE_HEAD -- _layouts/default.html
+</code></p>
+
+<p>And for &mdash;ours:</p>
+
+<p><code>bash
+git reset -- index.html
+git checkout ORIG_HEAD -- index.html
+</code></p>
+
+<p>Of course, once you’ve got the conflicts worked out, git add whatever changes need to be added in, and git commit away.</p>
+
+<h2>Customise your git log by adding the branch graphs</h2>
+
+<p>I usually use this log trick to see my git logs. I find it clearer.  First put this in your git config file  ~/.gitconfig:</p>
+
+<p>``` bash
+[alias]
+lg1 = log &mdash;graph &mdash;abbrev-commit &mdash;decorate &mdash;date=relative &mdash;format=format:&lsquo;%C(bold blue)%h%C(reset) &ndash; %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)&ndash; %an%C(reset)%C(bold yellow)%d%C(reset)&rsquo; &mdash;all</p>
+
+<p>lg2 = log &mdash;graph &mdash;abbrev-commit &mdash;decorate &mdash;format=format:&lsquo;%C(bold blue)%h%C(reset) &ndash; %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n&rsquo;&lsquo; %C(white)%s%C(reset) %C(dim white)&ndash; %an%C(reset)&rsquo; &mdash;all</p>
+
+<p>lg = !&ldquo;git lg1&rdquo;</p>
+
+<p>```</p>
+
+<p>you will see clearer the different branches when logging using git lg1 or git lg2.</p>
+
+<h2>Commit and add only certain changes of a file</h2>
+
+<p>Sometimes, in the case of a really big file for example, we modify it on different points for different features or bugs. If you only want to git add few modifications use:</p>
+
+<p>``` bash
+git add -p file</p>
+
+<p>```</p>
+
+<p>You will then be asked to choose which modifications of he file to add.</p>
+
+<h2>changing a commit message from an old commit</h2>
+
+<p>This works only if you haven&rsquo;t pushed to the remote repository. Let say we want to change the third last commit we did:</p>
+
+<p><code>bash
+git rebase -i HEAD~3
+</code></p>
+
+<p>change the word &lsquo;pick&rsquo; by  'edit'  and save.  then:</p>
+
+<p><code>bash
+git commit --amend
+</code></p>
+
+<p>you can now change the commit message.</p>
+
+<p>and finally:</p>
+
+<p><code>bash
+git rebase --continue
+</code></p>
+
+<p>that&rsquo;s it. If you want to change a commit message of the most recent (unpushed) commit, you can simply use:</p>
+
+<p><code>bash
+git commit --amend -m 'new message'
+</code></p>
+
+<h2>pass all change on a branch to another branch</h2>
+
+<p>I usually do that on master branch when I finished a feature that is on &lsquo;featureX&rsquo; branch. Be sure that master branch hasn&rsquo;t changed since you started working on your branch featureX</p>
+
+<p><code>bash
+git checkout featureX
+git merge -s ours master
+git checkout master
+git merge featureX
+</code></p>
+
+<p>all changes will be passed to master this way.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pros and cons of Test Driven Development]]></title>
+    <link href="http://loicginoux.github.io/blog/2013/06/07/pros-and-cons-of-test-driven-development/"/>
+    <updated>2013-06-07T14:18:29+02:00</updated>
+    <id>http://loicginoux.github.io/blog/2013/06/07/pros-and-cons-of-test-driven-development</id>
+    <content type="html"><![CDATA[<p>I won&rsquo;t tell you again that testing your app is important, you know that, right? I was asked this question recently and I think it&rsquo;s worth sharing it here:</p>
+
+<h1>PROS:</h1>
+
+<ol>
+<li>It is first a <strong>safety net</strong>. All the existing code is tested. As human programmers we make mistakes and when we change or improve a code, TDD will allow us to spot our bugs quicker.</li>
+<li>It can serve as <strong>documentation for new developers</strong>, it helps understanding what is the purpose of each piece of code. but it&rsquo;s definitely not enough as documentation (see cons 1)!</li>
+<li>It helps to improve and <strong>debug legacy code</strong>. You never remember what this piece of code you wrote a year ago (or even a month ago) was meant to do.</li>
+<li>It seems paradoxical because you write more code at the end but the <strong>overall cost of the app is reduced</strong>. You will gain time on the long-term for debugging and finding what&rsquo;s wrong with your code. (see related cons 2)</li>
+<li>By writing tests first, you need to focus and think first on the code you are going to implement. It allows for more decoupled, clean and simple code (KISS principle). It pushes to <strong>write good code design</strong>.</li>
+</ol>
+
+
+<h1>CONS:</h1>
+
+<ol>
+<li>Unit tests are a kind of documentation but there are <strong>not a substitute for a documentation</strong>, this will sure help understanding the code but it is not enough. It is neither a substitute for integration testing.</li>
+<li>Even if the overall cost is reduced, you will have <strong>more up front costs</strong> because you will need to write more code and unit tests before getting something ready.</li>
+<li>Writing good maintainable and reusable tests is <strong>not easy and requires practice</strong>. You have to know what to test, when not to test something. For example if you write unit test at a level too low, future small changes on your code will break your test and you will end up spending too much time on rewriting your tests.</li>
+<li>It is a good practice and a first step for a reliable application but this is <strong>not enough as an overall testing tool</strong>. Unit testing (and also integration testing) are only test and cases that the programmer thought about when writing it. In real conditions, with users who have different support, versions, configurations, there will always be a bug that you didn&rsquo;t think about. So <strong>beta testing is also important</strong> to do to try minimise the amount of bugs on your app.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

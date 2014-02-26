@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My check-list to make performance improvement to a Rails app - Blog</title>
+  <meta name="author" content="Loïc Ginoux">
+
+  
+  <meta name="description" content="performance, rails My Check-list to Make Performance Improvement to a Rails App In a recent project, I had to make the app faster. I could work on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://loicginoux.github.io/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+        <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a>
+</header>
+
+  <div class="main-container">
+    <div class="main wrapper clearfix">
+    	
+    	<aside>
+			
+			  	<div class="search-container">
+					<form action="http://google.com/search" method="get">
+						<fieldset role="search">
+							<input type="hidden" name="q" value="site:blog.alexharr.is" />
+							<input class="search-field" type="text" name="q" results="0" placeholder=""/>
+							<input class="submit" type="submit" value=""/>
+						</fieldset>
+					</form>
+				</div>
+			
+		  <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+					<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/02/17/joining-the-greaaat-network/">Joining the Greaaat Network</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/02/10/git-commands-to-remember/">Git Commands to Remember</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/08/12/about-this-and-the-lost-of-the-context/">About This and the Lost of the Context</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app/">My Check-list to Make Performance Improvement to a Rails App</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/06/07/pros-and-cons-of-test-driven-development/">Pros and Cons of Test Driven Development</a>
+    </li>
+    
+</ul>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'loicginoux',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+				
+        	</li>
+        	<li>
+        		<ul>
+                    <li>Website - <a href="http://www.loicginoux.com" target="_blank">loicginoux.com</a>
+        			<li>Github - <a href="http://www.github.com/loicginoux" target="_blank">github.com/loicginoux</a></li>
+                    <li>Twitter - <a href="http://www.twitter.com/loicginoux" target="_blank">@loicginoux</a></li>
+                    <li>Email - <a href="mailto:lginoux@gmail.com" target="_blank">lginoux at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+		</aside>
+		
+      <div>
+<article>
+	<header>
+  <div class="article-tags">
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/performance/'>performance</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+  </div>
+  
+    <h1>
+      My Check-list to Make Performance Improvement to a Rails App
+    </h1>
+  
+</header>
+<section>
+  <p>In a recent project, I had to make the app faster. I could work on both the front end and the back-end. The is an unordered list but you should first know where is your bottleneck in your app with the help of tools like the webkit debug tool, pageSpeed or an app like New Relic. Learning how to find the bottleneck on an app is not the matter of this post. I just list here few things not to forget if you want your app to be a bit optimized.
+Let’s see that.</p>
+
+<h2>Back-end</h2>
+
+<p>- use of a<strong> content delivery network</strong> to serve your static files. I am confortable with the config Amazon S3 %2B Amazon Cloudfront. This will help relieving your server from serving this never changing css, image and js files. these gem will help:&nbsp;<a href="https://github.com/rumblelabs/asset_sync">asset_sync</a>, <a href="https://github.com/marcel/aws-s3">aws-s3</a>, <a href="https://github.com/aws">aws-sdk</a></p>
+
+<p>- use of <a href="http://guides.rubyonrails.org/caching_with_rails.html">cache</a>. Rails makes it really easy to <strong>cache</strong> things. The <a href="https://github.com/mperham/dalli">Dalli</a> gem is really easy to use. Depending on your app, you can cache at different levels, Page caching, Action caching, fragment caching or request caching. Take a look at what page, action, request is used a lot and don’t change too often and cache it.</p>
+
+<p>- use of <strong>database indexes</strong>. There are really important for your database complicated queries. <a href="http://www.percona.com/resources/technical-presentations/mysql-indexing-percona-mysql-university-buenos-aires-argentina">this</a> will explain everything.</p>
+
+<p>- Add a<strong> cache control header</strong> or expires. This will help cache assets in your user’s browser.</p>
+
+<p>- <strong>avoid redirect</strong></p>
+
+<p>- do you use &nbsp;<a href="http://railscasts.com/episodes/22-eager-loading">eager loading</a>? in Rails be careful with the <strong>N+1 queries problem</strong>. it’s a really easy one fix.</p>
+
+<p>- when querying the db, only <strong>select the attributes you need</strong>. You don’t need to load the whole user table if you just display their username for example.</p>
+
+<p>&ndash;<strong> increase concurrency</strong> on your app. I use the server <a href="https://devcenter.heroku.com/articles/rails-unicorn">Unicorn</a> for that, and it integrates well with Heroku.</p>
+
+<p>- Use of <strong>background tasks</strong> for things like sending emails, reporting, etc… This is also useful in the case where you delete an item that will automatically delete all his associated objects. If you have thousands or millions of them, you can’t let the user wait for the task to delete all objects. Delete the first object and delete associated objects in background. &nbsp;<a href="http://mperham.github.io/sidekiq/">sidekick</a> or <a href="https://github.com/collectiveidea/delayed_job">delayed_job</a> will work for that.</p>
+
+<p>- <strong>NoSQL database</strong> and solutions like mongoDB will scale out more easily but have some downside. check out <a href="http://blog.sphereinc.com/2012/03/pros-and-cons-of-using-nosql-solutions/">this article</a></p>
+
+<p>- Create some <a href="http://www.postgresql.org/docs/current/static/ddl-partitioning.html">partition tables</a> when a db table can potentially contains a lot of rows.</p>
+
+<p>- sometimes it’s better to create a redundant attribute or table. For example in a db with a Post table and a Comment table, if you have millions of comments and you need to count the number of comments for an article, you would better have a nb_comments column on the Article table rather that counting it every time. Another example with the same tables Posts/Comments. If you need to display a page for an article that list the number of &nbsp;comments grouped &nbsp;per day. You would better create a third table StatCommentsArticle that would contain a article_id, a date and a nb_comments. These techniques will increase speed but you need to be carefull with data consistency when creating/modifying/deleting a comment.</p>
+
+<p>If you want to see some of these techniques in action, check the small application I made. You can find it <a href="https://github.com/loicginoux/rails_performance_test">here</a> on my github account.</p>
+
+<h2>Front-end</h2>
+
+<p>- <strong>minify</strong> javascript, css, and html to save some bandwidth.</p>
+
+<p>- <strong>minimize http requests</strong>. To do that, first concatenate your js files and serve only one js file and do the same for css. Then for images used in css background, make them <a href="http://www.base64-image.de/">base64</a></p>
+
+<p>- serve <strong>gzip compressed</strong> javascript and css files. You probably need to configure both Rails and your server.</p>
+
+<p>- serve <strong>right size images</strong>. You don’t need to serve a 1280 * 960 image for a 340 * 260 img tag.</p>
+
+<p>- specify the width and height attribute on the img tag so that the browser doesn’t resize it.</p>
+
+<p>- keep your html code as simple as possible.</p>
+
+<p>- make your css rules as simple as possible.</p>
+
+<p>- use <strong>Css sprites</strong> when possible.</p>
+
+<p>- don’t use css @import</p>
+
+<p>- lazy load images. The images that are not in the viewport (directly visible) can be loaded when scrolled down. see <a href="http://www.appelsiini.net/projects/lazyload">this plugin</a></p>
+
+<p>- stylesheet on top of html page and javascript at bottom.</p>
+
+<p>- when using third-party javascript library, use a CDN.</p>
+
+<p>- <strong>defer</strong> or load javascript files asynchronously. <a href="http://www.sitepoint.com/non-blocking-async-defer/">more</a></p>
+
+<p>- use <strong>ajax</strong> when possible. if you just need to update a small part of the page, why reloading the whole page?</p>
+
+<p>- iframes are bad! There are just blocking the page onload.</p>
+
+<p>- <strong>minimize DOM access</strong> in javascript. try improving the way you manipulate the DOM and see if you can group your modification in fewer &nbsp;ones.</p>
+
+<p>- <strong>optimize your images</strong>. I discovered recently a really good tool for that. <a href="http://www.macroplant.com/adapter/">Adapter</a>. You can also include this in your automation tool like grunt with <a href="https://github.com/gruntjs/grunt-contrib-imagemin">imagemin</a></p>
+
+<p>If you’ve applied all of these points in your app, you should see quite an improvement. You will then be happy like when you were young and doing some tuning to your scooter to make it goes at what.. 100-110Km/h (in the down slope and with wind behind you). Where you not happy at this moment?!</p>
+
+</section>
+<footer>
+  <div class="article-date">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T14:50:04+02:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+  </div>
+</footer>
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+		<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lginoux';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://loicginoux.github.io/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app/';
+        var disqus_url = 'http://loicginoux.github.io/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to run page specific javascript on Rails - Blog</title>
+  <meta name="author" content="Loïc Ginoux">
+
+  
+  <meta name="description" content="javascript, rails How to Run Page Specific Javascript on Rails In Ruby on Rails, all your javascript is available everywhere, but we always want to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://loicginoux.github.io/blog/2013/05/18/how-to-run-page-specific-javascript-on-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+        <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a>
+</header>
+
+  <div class="main-container">
+    <div class="main wrapper clearfix">
+    	
+    	<aside>
+			
+			  	<div class="search-container">
+					<form action="http://google.com/search" method="get">
+						<fieldset role="search">
+							<input type="hidden" name="q" value="site:blog.alexharr.is" />
+							<input class="search-field" type="text" name="q" results="0" placeholder=""/>
+							<input class="submit" type="submit" value=""/>
+						</fieldset>
+					</form>
+				</div>
+			
+		  <div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		
+					<h3>Recent Posts</h3>
+<ul>
+	
+    <li>
+    	<a href="/blog/2014/02/17/joining-the-greaaat-network/">Joining the Greaaat Network</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2014/02/10/git-commands-to-remember/">Git Commands to Remember</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/08/12/about-this-and-the-lost-of-the-context/">About This and the Lost of the Context</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app/">My Check-list to Make Performance Improvement to a Rails App</a>
+    </li>
+    
+    <li>
+    	<a href="/blog/2013/06/07/pros-and-cons-of-test-driven-development/">Pros and Cons of Test Driven Development</a>
+    </li>
+    
+</ul>
+
+
+
+
+
+				
+        	</li>
+        	<li>
+        		<ul>
+                    <li>Website - <a href="http://www.loicginoux.com" target="_blank">loicginoux.com</a>
+        			<li>Github - <a href="http://www.github.com/loicginoux" target="_blank">github.com/loicginoux</a></li>
+                    <li>Twitter - <a href="http://www.twitter.com/loicginoux" target="_blank">@loicginoux</a></li>
+                    <li>Email - <a href="mailto:lginoux@gmail.com" target="_blank">lginoux at gmail</a></li>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
+		</aside>
+		
+      <div>
+<article>
+	<header>
+  <div class="article-tags">
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+  </div>
+  
+    <h1>
+      How to Run Page Specific Javascript on Rails
+    </h1>
+  
+</header>
+<section>
+  <p>In Ruby on Rails, all your javascript is available everywhere, but we always want to run some javascript only on certain pages.  This is how I manage to run and compartiment my javascript code based on models and actions.</p>
+
+<p>First you need to add to your html layout a way for javascript to detect which model and which action the page is rendering:</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/application.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body</span> <span class="na">data-controller=</span><span class="s">&quot;&lt;%= controller_name %&gt;&quot;</span> <span class="na">data-action=</span><span class="s">&quot;&lt;%= action_name %&gt;&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then in your main javascript file:</p>
+
+<figure class='code'><figcaption><span>app/assets/application.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//= require jquery</span>
+</span><span class='line'><span class="c1">//= require jquery_ujs</span>
+</span><span class='line'><span class="c1">//= require ./init</span>
+</span><span class='line'><span class="c1">//= require ./utils</span>
+</span><span class='line'><span class="c1">// = require_tree ./ressources</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We define the code that will be run on every page at initialisation:</p>
+
+<figure class='code'><figcaption><span>app/assets/init.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// init your global app object</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// you need to add your controllers here to not throw an error</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// when calling the exec function from the utils.js file</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">common</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="nx">users</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="nx">another_controller</span><span class="o">:</span><span class="p">{}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;this will run on every page&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I usually add a UTIL object where I put my utilities functions, for this example, there are two functions that interest us &ldquo;init&rdquo; and &ldquo;exec&rdquo;:</p>
+
+<figure class='code'><figcaption><span>app/assets/utils.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nb">window</span><span class="p">.</span><span class="nx">UTIL</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// execute the corresponding function</span>
+</span><span class='line'>  <span class="nx">exec</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">ns</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">YOUR_APP</span><span class="p">;</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">action</span><span class="p">){</span>
+</span><span class='line'>     <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">;</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span> <span class="nx">controller</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span> <span class="p">){</span>
+</span><span class='line'>     <span class="nx">ns</span><span class="p">[</span><span class="nx">controller</span><span class="p">][</span><span class="nx">action</span><span class="p">]();</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// run on every page load to init the javascript calls</span>
+</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-controller&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-action&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;common&quot;</span><span class="p">)</span> <span class="c1">//run common.init</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">)</span> <span class="c1">//run controller.init</span>
+</span><span class='line'>    <span class="nx">UTIL</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">controller</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="c1">//run controller.action</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//run the init function</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span> <span class="nb">document</span> <span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="nx">UTIL</span><span class="p">.</span><span class="nx">init</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then inside my directory app/assets/ressources I have one js file per model with for example for the user model something like that:</p>
+
+<figure class='code'><figcaption><span>app/assets/ressources/user.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">YOUR_APP</span><span class="p">.</span><span class="nx">users</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run on all pages for user&#39;s action&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">index</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user index page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">view</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user view page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">edit</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user edit page&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;this code run only on the user show page&quot;</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope this will be useful for those who are looking for a solution. It&rsquo;s not the best but it works and gets things separated.</p>
+
+</section>
+<footer>
+  <div class="article-date">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-18T13:58:34+02:00" pubdate data-updated="true">May 18<span>th</span>, 2013</time>
+  </div>
+</footer>
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+		<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lginoux';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://loicginoux.github.io/blog/2013/05/18/how-to-run-page-specific-javascript-on-rails/';
+        var disqus_url = 'http://loicginoux.github.io/blog/2013/05/18/how-to-run-page-specific-javascript-on-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
