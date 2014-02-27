@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined variable: "$white".
-        on line 2 of /Users/lginoux/project/rails/octopres/sass/theme.scss
+        on line 2 of /Users/lginoux/project/octopres/sass/theme.scss
 
-1: /Users/lginoux/project/rails/octopres/sass/theme.scss
+1: /Users/lginoux/project/octopres/sass/theme.scss
 
 Backtrace:
-/Users/lginoux/project/rails/octopres/sass/theme.scss:2
+/Users/lginoux/project/octopres/sass/theme.scss:2
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/script/variable.rb:49:in `_perform'
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/script/node.rb:40:in `perform'
 /Users/lginoux/.rvm/gems/ruby-1.9.3-p448@octopress/gems/sass-3.2.9/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
@@ -62,4 +62,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$white\".\A         on line 2 of /Users/lginoux/project/rails/octopres/sass/theme.scss\A \A 1: /Users/lginoux/project/rails/octopres/sass/theme.scss"; }
+  content: "Syntax error: Undefined variable: \"$white\".\A         on line 2 of /Users/lginoux/project/octopres/sass/theme.scss\A \A 1: /Users/lginoux/project/octopres/sass/theme.scss"; }
