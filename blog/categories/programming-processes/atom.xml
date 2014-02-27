@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: programming processes | Blog]]></title>
+  <title><![CDATA[Category: programming processes | Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/programming-processes/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-27T12:29:43+01:00</updated>
+  <updated>2014-02-27T12:32:08+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
