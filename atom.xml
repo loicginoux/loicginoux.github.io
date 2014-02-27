@@ -4,7 +4,7 @@
   <title><![CDATA[Blog]]></title>
   <link href="http://loicginoux.github.io/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-26T19:46:58+01:00</updated>
+  <updated>2014-02-27T10:27:40+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sign a pdf contract on mac in 30 seconds]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/27/sign-a-pdf-contract-on-mac-in-30-seconds/"/>
+    <updated>2014-02-27T10:17:03+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/27/sign-a-pdf-contract-on-mac-in-30-seconds</id>
+    <content type="html"><![CDATA[<p>How did I miss this for so long? I finally found the easiest and free way to sign pdf contract on mac with Preview. It will only require a webcam.</p>
+
+<!-- more -->
+
+
+<p>These are the steps:</p>
+
+<ol>
+<li>Open your document with Preview.</li>
+<li>Go to Tools > Annotate > Signature</li>
+<li>Click on &ldquo;Create Signature from FaceTime camera&rdquo;</li>
+<li>Put in front of your camera a white paper with your signature. When you signature get recognized, accept it.</li>
+<li>Click anywhere on your document to add the signature.</li>
+<li>That&rsquo;s it! Save your document.</li>
+<li>Your signature will be registered in Preview for the next contract</li>
+</ol>
+
+
+<p>Wasn&rsquo;t that easy?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Joining the greaaat network]]></title>
