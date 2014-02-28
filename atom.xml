@@ -4,7 +4,7 @@
   <title><![CDATA[Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-28T11:37:42+01:00</updated>
+  <updated>2014-02-28T11:57:53+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction to Oauth2.0 protocol]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/28/introduction-to-oauth2-dot-0-protocol/"/>
+    <updated>2014-02-28T11:41:43+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/28/introduction-to-oauth2-dot-0-protocol</id>
+    <content type="html"><![CDATA[<p>explanation of the schema</p>
+
+<p>2 use cases:
+&ndash; Client : authenication on your app via other providers, linkedin, etc
+&ndash; Provider: Api securisation</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gemfile bootstrap]]></title>
@@ -306,7 +319,7 @@ So here it is with quick commenet explaining each of them:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>I will edit this post if I fill the need in the future.</p>
+<p>I will edit this post if I feel the need in the future.</p>
 ]]></content>
   </entry>
   
