@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-28T11:36:55+01:00</updated>
+  <updated>2014-02-28T11:37:42+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gemfile bootstrap]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap/"/>
+    <updated>2014-02-28T10:47:27+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap</id>
+    <content type="html"><![CDATA[<p>I will just keep here a list of gems I like to use in my Ruby on Rails projects.</p>
+
+<!-- more -->
+
+
+<p>There are so many good gems out there I usually forget some of them when starting a project. These are only here as a reminder for myself. All the configuration needs to be done and versions need adjustment if necessary.
+I won&rsquo;t use all of them in all project but more picking the one I need from this list.
+So here it is with quick commenet explaining each of them:</p>
+
+<p>``` ruby
+source &lsquo;<a href="https://rubygems.org">https://rubygems.org</a>&rsquo;</p>
+
+<h1>change it to your current version</h1>
+
+<h1>ruby &lsquo;1.9.3&rsquo;</h1>
+
+<h1>gem &lsquo;rails&rsquo;, &lsquo;3.2.16&rsquo;</h1>
+
+<h1>authentification system</h1>
+
+<p>gem &lsquo;authlogic&rsquo;</p>
+
+<h1>OAuth 2.0 Provider, for secruing your API</h1>
+
+<p>gem &lsquo;doorkeeper&rsquo;</p>
+
+<h1>SMS</h1>
+
+<p>gem &lsquo;twilio-ruby&rsquo;</p>
+
+<h1>Authorization Gem</h1>
+
+<p>gem &ldquo;cancan&rdquo;</p>
+
+<h1>API views</h1>
+
+<p>gem &lsquo;rabl&rsquo;</p>
+
+<h1>Rails 4 strong parameters</h1>
+
+<p>gem &lsquo;strong_parameters&rsquo;</p>
+
+<h1>Oauth2 client</h1>
+
+<p>gem &lsquo;omniauth&rsquo;</p>
+
+<h1>facebook API client</h1>
+
+<p>gem &lsquo;fb_graph&rsquo;</p>
+
+<h1>Oauth2 facebook client</h1>
+
+<p>gem &lsquo;omniauth-facebook&rsquo;</p>
+
+<h1>Oauth2 twitter client</h1>
+
+<p>gem &lsquo;omniauth-twitter&rsquo;</p>
+
+<h1>static pages</h1>
+
+<p>gem &ldquo;high_voltage&rdquo;</p>
+
+<h1>file management</h1>
+
+<p>gem &ldquo;paperclip&rdquo;, &ldquo;~> 3.1.3&rdquo;</p>
+
+<h1>file storage amazon s3</h1>
+
+<p>gem &lsquo;aws-s3&rsquo;
+gem &lsquo;aws-sdk&rsquo;</p>
+
+<h1>easy rest request</h1>
+
+<p>gem &ldquo;rest-client&rdquo;</p>
+
+<h1>pagination</h1>
+
+<p>gem &lsquo;will_paginate&rsquo;, &lsquo;~> 3.0&rsquo;</p>
+
+<h1>passing rails variable to js</h1>
+
+<p>gem &lsquo;gon&rsquo;</p>
+
+<h1>synh assets to S3</h1>
+
+<p>gem &ldquo;asset_sync&rdquo;</p>
+
+<h1>admin panel</h1>
+
+<p>gem &lsquo;activeadmin&rsquo;</p>
+
+<h1>transaltion gem</h1>
+
+<p>gem &lsquo;phrase&rsquo;</p>
+
+<h1>better sql logging</h1>
+
+<p>gem &ldquo;hirb&rdquo;</p>
+
+<h1>better active record print</h1>
+
+<p>gem &ldquo;awesome_print&rdquo;</p>
+
+<p>group :assets do
+  gem &lsquo;sass-rails&rsquo;,   &lsquo;~> 3.2.3&rsquo;
+  gem &lsquo;coffee-rails&rsquo;, &lsquo;~> 3.2.1&rsquo;</p>
+
+<p>  # See <a href="https://github.com/sstephenson/execjs#readme">https://github.com/sstephenson/execjs#readme</a> for more supported runtimes
+  # gem &lsquo;therubyracer&rsquo;</p>
+
+<p>  gem &lsquo;uglifier&rsquo;, &lsquo;>= 1.0.3&rsquo;</p>
+
+<p>  # Speeds up your Rails 3 assets:precompile
+  gem &lsquo;turbo-sprockets-rails3&rsquo;
+end</p>
+
+<p>group :development do
+  # get the chrome DevTool RailsPanem
+  gem &lsquo;meta_request&rsquo;
+  # guard to automate background tasks on file changes
+  # see railscast episode 264
+  # gem &lsquo;rb-fsevent&rsquo;, :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem &lsquo;guard&rsquo;
+  gem &lsquo;guard-rspec&rsquo;
+  gem &lsquo;guard-livereload&rsquo;
+end</p>
+
+<p>group :test, :darwin do
+  gem &lsquo;rb-fsevent&rsquo;
+end</p>
+
+<p>group :development, :test do
+  gem &lsquo;zeus&rsquo;
+end</p>
+
+<p>group :test do
+  # Acceptance test framework
+  gem &lsquo;capybara&rsquo;, :git =>  &ldquo;git://github.com/jnicklas/capybara.git&rdquo;
+  # Behaviour driven developement
+  gem &lsquo;cucumber-rails&rsquo;, :require => false
+  # ensure a clean state for testing
+  gem &lsquo;database_cleaner&rsquo;
+  # easy factories
+  gem &lsquo;factory_girl_rails&rsquo;
+  gem &lsquo;shoulda&rsquo;
+  # helper for creating lorem ipsum
+  gem &ldquo;lorem-ipsum&rdquo;</p>
+
+<p>end</p>
+
+<p>group :production, :staging do
+  # postgresql
+  gem &lsquo;pg&rsquo;
+  # Use unicorn as the app server
+  gem &lsquo;unicorn&rsquo;
+end</p>
+
+<p>group :production, :staging, :development do</p>
+
+<p>  # scheduled cron jobs
+  gem &lsquo;whenever&rsquo;, :require => false</p>
+
+<p>  # Application Performance Monitoring
+  gem &lsquo;newrelic_rpm&rsquo;</p>
+
+<p>  # memcache
+  gem &lsquo;dalli&rsquo;</p>
+
+<p>  # better fragment caching
+  gem &lsquo;cache_digests&rsquo;
+end</p>
+
+<p>```</p>
+
+<p>I will edit this post if I fill the need in the future.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My check-list to make performance improvement to a Rails app]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-02-28T11:36:55+01:00</updated>
+  <updated>2014-02-28T11:37:42+01:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -12,6 +12,303 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gemfile bootstrap]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap/"/>
+    <updated>2014-02-28T10:47:27+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap</id>
+    <content type="html"><![CDATA[<p>I will just keep here a list of gems I like to use in my Ruby on Rails projects.</p>
+
+<!-- more -->
+
+
+<p>There are so many good gems out there I usually forget some of them when starting a project. These are only here as a reminder for myself. All the configuration needs to be done and versions need adjustment if necessary.
+I won&rsquo;t use all of them in all project but more picking the one I need from this list.
+So here it is with quick commenet explaining each of them:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># change it to your current version</span>
+</span><span class='line'><span class="c1">#ruby &#39;1.9.3&#39;</span>
+</span><span class='line'><span class="c1">#gem &#39;rails&#39;, &#39;3.2.16&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#authentification system</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;authlogic&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># OAuth 2.0 Provider, for secruing your API</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;doorkeeper&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># SMS</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;twilio-ruby&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Authorization Gem</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;cancan&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># API views</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;rabl&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Rails 4 strong parameters</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;strong_parameters&#39;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Oauth2 client </span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>
+</span><span class='line'><span class="c1"># facebook API client </span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;fb_graph&#39;</span>
+</span><span class='line'><span class="c1"># Oauth2 facebook client</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth-facebook&#39;</span>
+</span><span class='line'><span class="c1"># Oauth2 twitter client</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth-twitter&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># static pages</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;high_voltage&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#file management</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;paperclip&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt; 3.1.3&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># file storage amazon s3</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;aws-s3&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;aws-sdk&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># easy rest request</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;rest-client&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#pagination</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;will_paginate&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 3.0&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#passing rails variable to js</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;gon&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># synh assets to S3</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;asset_sync&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># admin panel</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;activeadmin&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># transaltion gem</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;phrase&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#better sql logging</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;hirb&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># better active record print</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;awesome_print&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:assets</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;sass-rails&#39;</span><span class="p">,</span>   <span class="s1">&#39;~&gt; 3.2.3&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;coffee-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 3.2.1&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># See https://github.com/sstephenson/execjs#readme for more supported runtimes</span>
+</span><span class='line'>  <span class="c1"># gem &#39;therubyracer&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;uglifier&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 1.0.3&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Speeds up your Rails 3 assets:precompile</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;turbo-sprockets-rails3&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># get the chrome DevTool RailsPanem</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;meta_request&#39;</span>
+</span><span class='line'>  <span class="c1"># guard to automate background tasks on file changes</span>
+</span><span class='line'>  <span class="c1"># see railscast episode 264</span>
+</span><span class='line'>  <span class="c1"># gem &#39;rb-fsevent&#39;, :require =&gt; false if RUBY_PLATFORM =~ /darwin/i</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-rspec&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;guard-livereload&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:test</span><span class="p">,</span> <span class="ss">:darwin</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;rb-fsevent&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;zeus&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># Acceptance test framework</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;capybara&#39;</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span>  <span class="s2">&quot;git://github.com/jnicklas/capybara.git&quot;</span>
+</span><span class='line'>  <span class="c1"># Behaviour driven developement</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="c1"># ensure a clean state for testing</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;database_cleaner&#39;</span>
+</span><span class='line'>  <span class="c1"># easy factories</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;factory_girl_rails&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;shoulda&#39;</span>
+</span><span class='line'>  <span class="c1"># helper for creating lorem ipsum</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;lorem-ipsum&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:production</span><span class="p">,</span> <span class="ss">:staging</span> <span class="k">do</span>
+</span><span class='line'>  <span class="c1"># postgresql</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
+</span><span class='line'>  <span class="c1"># Use unicorn as the app server</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;unicorn&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:production</span><span class="p">,</span> <span class="ss">:staging</span><span class="p">,</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># scheduled cron jobs</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;whenever&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Application Performance Monitoring</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;newrelic_rpm&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># memcache</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;dalli&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># better fragment caching</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;cache_digests&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I will edit this post if I fill the need in the future.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sign a pdf contract on mac in 30 seconds]]></title>
