@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: authentication | Loic Ginoux Blog]]></title>
+  <link href="http://loicginoux.github.io/blog/categories/authentication/atom.xml" rel="self"/>
+  <link href="http://loicginoux.github.io/"/>
+  <updated>2014-03-15T23:24:18+01:00</updated>
+  <id>http://loicginoux.github.io/</id>
+  <author>
+    <name><![CDATA[Loïc Ginoux]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction to Oauth2.0 authorisation framework]]></title>
+    <link href="http://loicginoux.github.io/blog/2014/02/28/introduction-to-oauth2-dot-0-protocol/"/>
+    <updated>2014-02-28T11:41:43+01:00</updated>
+    <id>http://loicginoux.github.io/blog/2014/02/28/introduction-to-oauth2-dot-0-protocol</id>
+    <content type="html"><![CDATA[<p>There are different protocols and frameworks for authorizing a third party application to access restricted content but the most recent and the one that most social websites use is the Oauth2.0 protocol.</p>
+
+<!-- more -->
+
+
+<p>This is a complete different protocol as Oauth v1 so be carefull when you are are reading about Oauth and know which version the article is talking about.
+Authentication seems complicated when first approached and I just want to share here an easy summary to understand how this works.</p>
+
+<h2>Use cases</h2>
+
+<p>You will find 2 main use cases as a developer:</p>
+
+<p>- A web application (an Oauth client) will add to its registration/login process a way to login via a more reliable service (a Oauth provider) like Facebook, Twitter, etc..</p>
+
+<p>- An application (a provider) wants to open its API so that other third party applications (clients) can make requests to its API in a secure and authenicated way and without having to store the user&rsquo;s credentials of the provider application.</p>
+
+<h2>Roles</h2>
+
+<p>There are two main roles involved in this communication.</p>
+
+<p>- <strong> the client </strong> : a complete different application that need access to another external API.</p>
+
+<p>- <strong> the provider </strong>: the application that provide the API or the one that you use to authenticate (think about Facebook authentication for example). It also manages which applications is allowed to access the different resources. The provider is usually the same server but it can be separated into 3 different servers: <strong> the resource owner </strong> that contains protected content or resource. This owner will allow access to resources (photos, pages, API, etc&hellip;) hosted on the <strong> resource server </strong>, <strong> the authorisation server </strong> will issue the access to client applications with the approval of the resource owner.</p>
+
+<h2>Protocol</h2>
+
+<p><img src="/images/posts/oauth20.jpg" alt="Oauth2.0 protocol" /></p>
+
+<p>(A)  The client requests authorisation from the resource owner. The authorisation request can be made directly to the resource owner (as shown), or preferably indirectly via the authorisation server as an intermediary. It is basically the process happening when an application redirects you to the Facebook site and ask you permission to do some actions with your Facebook account. The framework allows you to specify a <strong> scope </strong> which will restrict the client application acess. For example a basic facebook scope could be reading your name and getting your photo while a write scope could be the possibility to let the client publish posts on your facebook account.</p>
+
+<p> (B)  The client receives an authorisation grant, There are 4 types of grants (<a href="http://tools.ietf.org/html/rfc6749#section-1.3">described here</a>). In this introduction, we see only the authorisation code. So the provider sends back to the app an authentication token representing the resource owner&rsquo;s authorisation.</p>
+
+<p> &copy;  The client requests an access token by authenticating with the authorisation server and sending the authorisation code granted.</p>
+
+<p> (D)  The authorisation server authenticates the client and validates the authorisation grant, and if valid, issues an access token.</p>
+
+<p> (E)  The client requests the protected resource from the resource server and authenticates by presenting the access token. At this time you can access the provider API with the acess token only, there is no need to know the user&rsquo;s credentials.</p>
+
+<p> (F)  The resource server validates the access token, and if valid, serves the request.</p>
+
+<h2>The acess token</h2>
+
+<p>This token is usually a hash string used to access restricted resources. It has a specific expiry period and access scope. It may be restricted to a specific user.</p>
+
+<h2>The refresh token</h2>
+
+<p>Depending on the implementation of the provider, You will have two choices when the acess token has expired. If no refresh token has been provided, you need to restart the authentication process from the point &copy;. In the other hand, the provider can also send at the point (D) not only the acess token but also the refresh token. In this last case, this token is used to obtain a new access token when the current access token becomes invalid or expires.</p>
+
+<p><img src="/images/posts/oauth_refresh_20.png" alt="Oauth2.0 refreshing an acess token" /></p>
+
+<h2>Oauth 2.0 is not for authentication</h2>
+
+<p>I just want to clarify one point which is sometimes misunderstood. This is an <strong> AUTHORISATION </strong> framework. It is not an authentication framework. It means that the provider allows you, as a client, to use some of its resources, in a controlled way. You will not be allowed to authenticate to the provider app using the acess token.</p>
+
+<h2>Your job as a developer</h2>
+
+<p>As a developer, you will have 2 different jobs when dealing with this authorisation framework.</p>
+
+<p>- implementing the client app. You will have to register your application into the provider app. For example for the Facebook provider it&rsquo;s on <a href="https://developers.facebook.com/apps">this page</a>. It will gives you an app id and secret key. These are kept into yout application and will allow you to grant authorisation from the provider. You will probably also have to provide a callback URL, which is a the url the provider will redirect you when granted authorisation. As a RoR developers, the gem Omniauth is the best way to go.</p>
+
+<p>- implementing the provider. You will need to create the pages for managing the client applications and restrict your API to be used with acess token authenication. All this is quite easy to do in Rails with the well documented gem Doorkeeper.</p>
+
+<p>I hope you see a bit more clearly into this authorisation process but you should refer to the spec for more details.</p>
+
+<h3>sources</h3>
+
+<p><a href="http://tools.ietf.org/html/rfc6749">Oauth2.0 specifications</a></p>
+]]></content>
+  </entry>
+  
+</feed>
