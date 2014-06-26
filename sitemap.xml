@@ -40,7 +40,7 @@
     </url>
     <url>
         <loc>http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap/</loc>
-        <lastmod>2014-02-28T11:57:41+01:00</lastmod>
+        <lastmod>2014-05-10T13:05:10+02:00</lastmod>
     </url>
     <url>
         <loc>
@@ -49,12 +49,18 @@
         <lastmod>2014-03-20T12:28:39+01:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://loicginoux.github.io/blog/2014/06/26/elastic-search-and-ruby-on-rails-example-application/
+        </loc>
+        <lastmod>2014-06-26T12:12:54+02:00</lastmod>
+    </url>
+    <url>
         <loc>http://loicginoux.github.io/blog/archives/</loc>
-        <lastmod>2014-03-20T12:28:39+01:00</lastmod>
+        <lastmod>2014-06-26T12:12:54+02:00</lastmod>
     </url>
     <url>
         <loc>http://loicginoux.github.io/</loc>
-        <lastmod>2014-03-20T12:28:39+01:00</lastmod>
+        <lastmod>2014-06-26T12:12:54+02:00</lastmod>
     </url>
     <url>
         <loc>http://loicginoux.github.io/robots.txt</loc>

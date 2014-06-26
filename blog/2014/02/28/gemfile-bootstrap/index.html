@@ -79,8 +79,19 @@
   <p>Technical tutorials, notes on Ruby on Rails and Javascript with a zest of freelancing.</p>
   <p>I am also a freelance IT Engineer available for hire.</p>
 </li><li>
+  <ul>
+  <li>Website - <a href="http://www.loicginoux.com" target="_blank">loicginoux.com</a>
+    <li>Github - <a href="http://www.github.com/loicginoux" target="_blank">github.com/loicginoux</a></li>
+    <li>Twitter - <a href="http://www.twitter.com/loicginoux" target="_blank">@loicginoux</a></li>
+    <li>Email - <a href="mailto:lginoux@gmail.com" target="_blank">lginoux at gmail</a></li>
+  </ul>
+</li><li>
   <h3>Recent Posts</h3>
   <ul>
+   
+   <li>
+     <a href="/blog/2014/06/26/elastic-search-and-ruby-on-rails-example-application/">Elastic Search and Ruby on Rails Example Application</a>
+   </li>
    
    <li>
      <a href="/blog/2014/03/20/introduction-to-oauth2-dot-0-protocol/">Introduction to Oauth2.0 Authorisation Framework</a>
@@ -98,18 +109,7 @@
      <a href="/blog/2014/02/17/joining-the-greaaat-network/">Joining the Greaaat Network</a>
    </li>
    
-   <li>
-     <a href="/blog/2014/02/10/git-commands-to-remember/">Git Commands to Remember</a>
-   </li>
-   
  </ul>
-</li><li>
-  <ul>
-  <li>Website - <a href="http://www.loicginoux.com" target="_blank">loicginoux.com</a>
-    <li>Github - <a href="http://www.github.com/loicginoux" target="_blank">github.com/loicginoux</a></li>
-    <li>Twitter - <a href="http://www.twitter.com/loicginoux" target="_blank">@loicginoux</a></li>
-    <li>Email - <a href="mailto:lginoux@gmail.com" target="_blank">lginoux at gmail</a></li>
-  </ul>
 </li><li>
   <h3 class="panel-title">Categories</h3>
   <ul>
@@ -168,6 +168,20 @@
       
       <a class="list-group-item " href="/blog/categories/security/index.html">
           security (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/elastic-search/index.html">
+          elastic-search (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/search,/index.html">
+          search, (<span class="badge">1</span>)
         </a>
     </li>
     
@@ -348,6 +362,8 @@ So here it is with quick commenet explaining each of them:</p>
 <span class='line-number'>136</span>
 <span class='line-number'>137</span>
 <span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1"># change it to your current version</span>
@@ -372,6 +388,8 @@ So here it is with quick commenet explaining each of them:</p>
 </span><span class='line'><span class="c1"># Rails 4 strong parameters</span>
 </span><span class='line'><span class="n">gem</span> <span class="s1">&#39;strong_parameters&#39;</span>
 </span><span class='line'>
+</span><span class='line'><span class="c1"># your controllers inherit all restful actions so you just have to focus on what is important.</span>
+</span><span class='line'><span class="n">inherited_resources</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1"># Oauth2 client </span>
 </span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>

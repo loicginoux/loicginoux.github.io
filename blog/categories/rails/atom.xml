@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-03-20T12:29:05+01:00</updated>
+  <updated>2014-06-26T12:14:01+02:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -59,6 +59,10 @@ source &lsquo;<a href="https://rubygems.org">https://rubygems.org</a>&rsquo;</p>
 <h1>Rails 4 strong parameters</h1>
 
 <p>gem &lsquo;strong_parameters&rsquo;</p>
+
+<h1>your controllers inherit all restful actions so you just have to focus on what is important.</h1>
+
+<p>inherited_resources</p>
 
 <h1>Oauth2 client</h1>
 
