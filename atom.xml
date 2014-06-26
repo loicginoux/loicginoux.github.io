@@ -4,7 +4,7 @@
   <title><![CDATA[Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-06-26T12:16:56+02:00</updated>
+  <updated>2014-06-26T12:20:27+02:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -52,6 +52,8 @@
 <p>View after searching for the word &ldquo;camera&rdquo;:</p>
 
 <p><img class="left" src="http://loicginoux.github.io/images/posts/elastic-search-app/products_catalog_2.png" width="650" title="image" alt="screenshot 2"></p>
+
+<p>NB: This little application is just a demo, I didn&rsquo;t tested as I probably won&rsquo;t come back to it and don&rsquo;t need to maintain the code in the future.</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: elastic-search | Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/elastic-search/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2014-06-26T12:16:56+02:00</updated>
+  <updated>2014-06-26T12:20:58+02:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -47,11 +47,13 @@
 
 <p>the defaut view:</p>
 
-<p><img class="left" src="/images/posts/elastic-search-app/products_catalog.png" width="650" title="&lsquo;image&rsquo; &lsquo;screenshot 1&rsquo;" ></p>
+<p>{% img left /images/posts/elastic-search-app/products_catalog.png 650 &lsquo;image&rsquo; &lsquo;screenshot 1&rsquo; %}</p>
 
 <p>View after searching for the word &ldquo;camera&rdquo;:</p>
 
-<p><img class="left" src="/images/posts/elastic-search-app/products_catalog_2.png" width="650" title="&lsquo;image&rsquo; &lsquo;screenshot 2&rsquo;" ></p>
+<p>{% img left /images/posts/elastic-search-app/products_catalog_2.png 650 &lsquo;image&rsquo; &lsquo;screenshot 2&rsquo; %}</p>
+
+<p>NB: This little application is just a demo, I didn&rsquo;t tested as I probably won&rsquo;t come back to it and don&rsquo;t need to maintain the code in the future.</p>
 ]]></content>
   </entry>
   
