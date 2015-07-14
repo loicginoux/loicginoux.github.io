@@ -4,19 +4,19 @@
         <loc>
             http://loicginoux.github.io/blog/2013/05/18/how-to-run-page-specific-javascript-on-rails/
         </loc>
-        <lastmod>2014-02-26T19:17:25+01:00</lastmod>
+        <lastmod>2014-02-26T19:17:24+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://loicginoux.github.io/blog/2013/06/07/pros-and-cons-of-test-driven-development/
         </loc>
-        <lastmod>2014-02-26T19:17:51+01:00</lastmod>
+        <lastmod>2014-02-26T19:17:50+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://loicginoux.github.io/blog/2013/07/12/my-check-list-to-make-performance-improvement-to-a-rails-app/
         </loc>
-        <lastmod>2014-02-26T19:17:57+01:00</lastmod>
+        <lastmod>2014-02-26T19:17:56+01:00</lastmod>
     </url>
     <url>
         <loc>
@@ -36,7 +36,7 @@
         <loc>
             http://loicginoux.github.io/blog/2014/02/27/sign-a-pdf-contract-on-mac-in-30-seconds/
         </loc>
-        <lastmod>2014-02-27T11:54:55+01:00</lastmod>
+        <lastmod>2014-02-27T11:54:54+01:00</lastmod>
     </url>
     <url>
         <loc>http://loicginoux.github.io/blog/2014/02/28/gemfile-bootstrap/</loc>
@@ -46,7 +46,7 @@
         <loc>
             http://loicginoux.github.io/blog/2014/03/20/introduction-to-oauth2-dot-0-protocol/
         </loc>
-        <lastmod>2014-03-20T12:28:39+01:00</lastmod>
+        <lastmod>2014-03-20T12:28:38+01:00</lastmod>
     </url>
     <url>
         <loc>
@@ -55,15 +55,21 @@
         <lastmod>2014-06-26T12:20:18+02:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/
+        </loc>
+        <lastmod>2015-07-14T13:07:59+02:00</lastmod>
+    </url>
+    <url>
         <loc>http://loicginoux.github.io/blog/archives/</loc>
-        <lastmod>2014-06-26T12:20:18+02:00</lastmod>
+        <lastmod>2015-07-14T13:07:59+02:00</lastmod>
     </url>
     <url>
         <loc>http://loicginoux.github.io/</loc>
-        <lastmod>2014-06-26T12:20:18+02:00</lastmod>
+        <lastmod>2015-07-14T13:07:59+02:00</lastmod>
     </url>
     <url>
         <loc>http://loicginoux.github.io/robots.txt</loc>
-        <lastmod>2014-02-26T12:01:15+01:00</lastmod>
+        <lastmod>2014-02-26T12:01:14+01:00</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mes règles de conventions pour le css - Loic Ginoux Blog</title>
+  <meta name="author" content="Loïc Ginoux">
+
+  
+  
+  <meta name="description" content="css, guidelines Mes Règles De Conventions Pour Le Css Je profite de ce 14 juillet pour lire un peu sur les conventions css des différents sites web &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/styles.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Loic Ginoux Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/jquery.sidr.min.js"></script>
+  <script src="/javascripts/ah-blue.js"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40468900-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head> 
+
+<body   >
+  <div class="aux-container">
+    <a id="nav-toggle" href="#sidr"></a>
+    <a id="search-toggle"></a>
+</div>
+
+<header class="header-container clearfix">
+        <a href="/"><img src="/images/ah-frame.svg" onerror="this.onerror=null; this.src='ah-frame.png'"></a>
+</header>
+
+  <div class="main-container">
+    <div class="main wrapper clearfix">
+    	
+    	<aside>
+			
+			  	<div class="search-container">
+					<form action="http://google.com/search" method="get">
+						<fieldset role="search">
+							<input type="hidden" name="q" value="site:http://loicginoux.github.io" />
+							<input class="search-field" type="text" name="q" results="0" placeholder=""/>
+							<input class="submit" type="submit" value=""/>
+						</fieldset>
+					</form>
+				</div>
+			
+		  <div id="main-nav">
+    <nav>
+        <ul>
+        
+            <li>
+  <p>Technical tutorials, notes on Ruby on Rails and Javascript with a zest of freelancing.</p>
+  <p>I am also a freelance IT Engineer available for hire.</p>
+</li><li>
+  <ul>
+  <li>Website - <a href="http://www.loicginoux.com" target="_blank">loicginoux.com</a>
+    <li>Github - <a href="http://www.github.com/loicginoux" target="_blank">github.com/loicginoux</a></li>
+    <li>Twitter - <a href="http://www.twitter.com/loicginoux" target="_blank">@loicginoux</a></li>
+    <li>Email - <a href="mailto:lginoux@gmail.com" target="_blank">lginoux at gmail</a></li>
+  </ul>
+</li><li>
+  <h3>Recent Posts</h3>
+  <ul>
+   
+   <li>
+     <a href="/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/">Mes Règles De Conventions Pour Le Css</a>
+   </li>
+   
+   <li>
+     <a href="/blog/2014/06/26/elastic-search-and-ruby-on-rails-example-application/">Elastic Search and Ruby on Rails Example Application</a>
+   </li>
+   
+   <li>
+     <a href="/blog/2014/03/20/introduction-to-oauth2-dot-0-protocol/">Introduction to Oauth2.0 Authorisation Framework</a>
+   </li>
+   
+   <li>
+     <a href="/blog/2014/02/28/gemfile-bootstrap/">Gemfile Bootstrap</a>
+   </li>
+   
+   <li>
+     <a href="/blog/2014/02/27/sign-a-pdf-contract-on-mac-in-30-seconds/">Sign a Pdf Contract on Mac in 30 Seconds</a>
+   </li>
+   
+ </ul>
+</li><li>
+  <h3 class="panel-title">Categories</h3>
+  <ul>
+
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/javascript/index.html">
+          javascript (<span class="badge">2</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/rails/index.html">
+          rails (<span class="badge">3</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/programming-processes/index.html">
+          programming processes (<span class="badge">2</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/testing/index.html">
+          testing (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/performance/index.html">
+          performance (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/freelancing/index.html">
+          freelancing (<span class="badge">2</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/authentication/index.html">
+          authentication (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/security/index.html">
+          security (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/elastic-search/index.html">
+          elastic-search (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/search,/index.html">
+          search, (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/css/index.html">
+          css (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+    <li>
+      
+      <a class="list-group-item " href="/blog/categories/guidelines/index.html">
+          guidelines (<span class="badge">1</span>)
+        </a>
+    </li>
+    
+  </ul>
+</li>
+        
+        </ul>
+    </nav>
+</div>
+		</aside>
+		
+      <div>
+<article>
+	<header>
+  <div class="article-tags">
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/guidelines/'>guidelines</a>
+  
+</span>
+
+
+  </div>
+  
+    <h1>
+      Mes Règles De Conventions Pour Le Css
+    </h1>
+  
+</header>
+<section>
+  
+    <p>Je profite de ce 14 juillet pour lire un peu sur les conventions css des différents sites web. Pour les anglophones, je vous conseille de lire comment font les différents sites tels que <a href="http://blog.trello.com/refining-the-way-we-structure-our-css-at-trello/">Trello</a>, <a href="https://gist.github.com/fat/a47b882eb5f84293c4ed">Medium</a> ou bien encore <a href="http://markdotto.com/2014/07/23/githubs-css/">Github</a>. Ces sites ont suivi leur propre chemin en mixant à leur sauce des méthodes tels que <a href="https://en.bem.info/method/">BEM</a> (Blocks &ndash; Elements &ndash; Modifiers) ou bien le <a href="http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/">OOCSS</a>. Si vous ne connaissiez pas ces techniques, commencez par ça, ca ne peut que vous faire du bien!</p>
+
+<!-- more -->
+
+
+<p>Bon je vais pas vous faire un dessin, mais ces techniques ont été mis au point pour mettre de l&#8217;ordre dans vos fichiers css. <strong>Voici les principaux bénéfices</strong> à suivre ce genre de conventions css:</p>
+
+<ul>
+<li><p>votre code sera beaucoup <strong>plus simple à maintenir</strong>. Le prochain développeur à mettre le nez dans votre code vous en remerciera.</p></li>
+<li><p><strong>vous gagnerez en performance</strong> au niveau du rendu de la page, En faisant les choses bien, vous gagnerez en taille du fichier, mais aussi vous serez plus efficaces sur les sélecteurs css.</p></li>
+</ul>
+
+
+<p>J&#8217;aimerai donc garder ici quelques règles à suivre que je donne sans aucun ordre:</p>
+
+<h1>Conventions générales</h1>
+
+<ul>
+<li>la dernière ligne d&#8217;une règle de css n&#8217;a pas besoin de &ldquo;;&rdquo;</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.header</span> <span class="nc">.title</span> <span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-size</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p><strong>utilisez au possible les classes</strong> plutôt que tout autre type de sélecteurs</p></li>
+<li><p>utilisez un seul tiret pour le nom des classes (<code>header-title</code>), pas de camelCase ni d&#8217;underscore.</p></li>
+<li><p>séparer la valeur après les 2 points. Ex: pas de <code>color:white;mais plutôt</code>color: white;&#8220;`</p></li>
+<li><p>utilisez les raccourcis quand cela est possible, le 0 n&#8217;a pas besoin d&#8217;unité. Ex: pas de <code>margin: 10px 0px 10px 0px;mais plutôt</code>margin: 10px 0;&#8220;`</p></li>
+<li><p>utilisez un <a href="https://github.com/necolas/normalize.css">normalize.css</a>, c&#8217;est bien!</p></li>
+<li><p>Les noms des classes doivent ajouter une information au développeur. Un nom de classe trop générale vous fera perdre du temps, surtout sur un projet en équipe</p></li>
+<li><p>dans un souci de réutilisation, séparer les règles css de structure et celles d&#8217;apparence</p></li>
+<li><p><strong>éviter des styles dépendant du contexte</strong>. Mauvais exemple: <code>article &gt; p:nth-child(2) &gt; span.plop</code></p></li>
+</ul>
+
+
+<p>J&#8217;aime beaucoup aussi ces règles utilisées chez Medium:</p>
+
+<ul>
+<li><strong>un préfixe &ldquo;js-&rdquo;</strong> est utilisé pour les classes qui vont être manipulées par javascript. Durant les refactoring ca évitera de supprimer et casser des comportements javascripts. Ex:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/login&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary js-login&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p><strong>un préfixe &ldquo;u-&rdquo;</strong> pour les classes &ldquo;&#8221;utils&rdquo;. Les class tels que <code>.u-pull-left</code>, <code>.u-capitalize</code>, etc..</p></li>
+<li><p><strong>un préfixe &ldquo;is-&rdquo;</strong> pour indiquer un état, qui pourra ensuite être ajouté ou pas via javascript. Ex: <code>.is-closed</code>, <code>.is-expanded</code></p></li>
+<li><p>dans la veine de la technique BEM, Ils utilisent les  et les doubles tirets ou underscor pour séparer les blocks des éléments ou les éléments des modifiers. On peut par exemple prendre comme convention<code>.block-name_element-name</code> et pour séparer un modifier <code>.element-name--big</code>.</p></li>
+</ul>
+
+
+<h1>Maintenabilité</h1>
+
+<ul>
+<li><p>utilisez un <strong>préprocesseur</strong>: sass, scss, less, celui que vous voulez.</p></li>
+<li><p><strong>indentez vos règles imbriquées</strong>.</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.header</span> <span class="p">{</span>  <span class="k">height</span><span class="o">:</span> <span class="m">100px</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.header-title</span> <span class="p">{</span>   <span class="k">color</span><span class="o">:</span> <span class="nb">red</span>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>utilisez <a href="https://github.com/ai/">autoprefixer</a> pour ajouter les vendor prefixes</li>
+</ul>
+
+
+<h1>Performances</h1>
+
+<ul>
+<li>gardez les sélecteurs aussi petits que possible et évitez les imbrications non nécessaires.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="err">#</span> <span class="nt">bad</span>
+</span><span class='line'><span class="nc">.header</span> <span class="nc">.title</span> <span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">#</span> <span class="nt">good</span>
+</span><span class='line'><span class="nc">.header-title</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>n&#8217;utilisez <strong>pas de tag html dans vos sélecteurs</strong>. Les navigateurs lisent les règles css de la droite vers la gauche. Si vous terminez votre règle avec div, par exemple <code>.content div {...};</code> le navigateur va parser tous les divs de votre page&hellip; BAAAD!</p></li>
+<li><p>utilisez des <strong>sprites</strong> pour les images (quand on en a beaucoup).</p></li>
+<li><p>pour le déploiement en production, combinez au maximum vos fichiers css en un seul ou 2 fichiers css. Ensuite il faut bien sûr <strong>minimiser vos fichiers</strong>, encore mieux les <strong>gzipper</strong> et si vous avez un <strong>CDN</strong> sur lequel le placer vous avez tout gagné.</p></li>
+</ul>
+
+
+<p>C&#8217;est tout pour aujourd&#8217;hui, N&#8217;hésitez pas si vous avez des techniques que vous voudriez partager aussi.</p>
+
+<p>Happy Coding!</p>
+
+  
+
+</section>
+<footer>
+
+  <div class="article-date">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-14T12:14:51+02:00" pubdate data-updated="true">Jul 14<span>th</span>, 2015</time>
+  </div>
+  
+    <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/" data-via="loicginoux" data-counturl="http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+  
+
+</footer>
+
+	
+	  <section class="comments">
+	    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+	  </section>
+	
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer class="main-footer">
+	<section class="interior-footer">
+		<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+	</section>
+</footer>
+
+
+  
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lginoux';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/';
+        var disqus_url = 'http://loicginoux.github.io/blog/2015/07/14/mes-regles-de-conventions-pour-le-css/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
