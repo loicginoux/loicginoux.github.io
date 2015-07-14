@@ -4,7 +4,7 @@
   <title><![CDATA[Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2015-07-14T13:20:02+02:00</updated>
+  <updated>2015-07-14T13:34:37+02:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -34,22 +34,6 @@
 <p>J&#8217;aimerai donc garder ici quelques règles à suivre que je donne sans aucun ordre:</p>
 
 <h1>Conventions générales</h1>
-
-<ul>
-<li>la dernière ligne d&#8217;une règle de css n&#8217;a pas besoin de &ldquo;;&rdquo;</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.header</span> <span class="nc">.title</span> <span class="nt">h1</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">font-size</span><span class="o">:</span> <span class="m">20px</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
 
 <ul>
 <li><p><strong>utilisez au possible les classes</strong> plutôt que tout autre type de sélecteurs</p></li>

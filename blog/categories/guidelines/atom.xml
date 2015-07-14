@@ -4,7 +4,7 @@
   <title><![CDATA[Category: guidelines | Loic Ginoux Blog]]></title>
   <link href="http://loicginoux.github.io/blog/categories/guidelines/atom.xml" rel="self"/>
   <link href="http://loicginoux.github.io/"/>
-  <updated>2015-07-14T13:20:02+02:00</updated>
+  <updated>2015-07-14T13:34:37+02:00</updated>
   <id>http://loicginoux.github.io/</id>
   <author>
     <name><![CDATA[Loïc Ginoux]]></name>
@@ -34,18 +34,6 @@
 <p>J'aimerai donc garder ici quelques règles à suivre que je donne sans aucun ordre:</p>
 
 <h1>Conventions générales</h1>
-
-<ul>
-<li>la dernière ligne d'une règle de css n'a pas besoin de &ldquo;;&rdquo;</li>
-</ul>
-
-
-<p><code>css
-.header .title h1 {
-  font-size: 20px;
-  font-weight: bold
-}
-</code></p>
 
 <ul>
 <li><p><strong>utilisez au possible les classes</strong> plutôt que tout autre type de sélecteurs</p></li>
